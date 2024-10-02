@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from src.logger import logging  # Assuming logging is set up correctly
 from src.exception import CustomException  # Assuming CustomException is defined
 from dataclasses import dataclass
+from src.components.data_transformation import DataTransformation
 
 @dataclass
 class DataIngestionConfig:
@@ -51,4 +52,6 @@ class DataIngestion:
 
 if __name__ == "__main__":
     obj = DataIngestion()
-    obj.initialize_data_ingestion()
+    test_path, train_path = obj.initialize_data_ingestion()
+    data_transformation = DataTransformation()
+    data_transformation.initialize_data_transformer_obj(train_path, test_path)
