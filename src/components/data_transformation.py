@@ -8,7 +8,7 @@ from src.exception import CustomException
 from src.logger import logging
 from dataclasses import dataclass
 from sklearn.compose import ColumnTransformer
-from src.utils import save_object
+from src.utils import save_object, select_top_55_features
 
 @dataclass
 class DataTransformerConfig:
@@ -94,7 +94,20 @@ class DataTransformation:
             train_arr=preprocessing_pipeline.fit_transform(train_df)
             test_arr=preprocessing_pipeline.transform(test_df)
 
-            
+            feature_columns = train_df.columns
+
+            logging.info('Convert the transformed arrays back into DataFrames')
+            train_transformed_df = pd.DataFrame(train_arr, columns=feature_columns)
+            test_transformed_df = pd.DataFrame(test_arr, columns=feature_columns)
+
+            logging.info('Selecting the top 55 cols')
+            imp_cols = select_top_55_features(train_transformed_df)
+
+            logging.info('Updated train and test Datasets with new updated Feature')
+            train_transformed_df = train_transformed_df[imp_cols]
+            test_transformed_df = test_transformed_df[imp_cols]
+            logging.info(f"Traing Dataframe Columns: {train_transformed_df.columns}\nTesting Dataframe Columns: {test_transformed_df.columns}")
+
             logging.info(f"Saved preprocessing object.")
             save_object(
                 file_path=self.data_transformation_config.preprocessor_obj_file,
@@ -102,8 +115,8 @@ class DataTransformation:
             )
 
             return (
-                train_arr,
-                test_arr,
+                train_transformed_df,
+                test_transformed_df,
                 self.data_transformation_config.preprocessor_obj_file,
             )
         except Exception as e:
