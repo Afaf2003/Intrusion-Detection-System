@@ -50,7 +50,7 @@ The project is designed to handle real-time network traffic and can be integrate
 │   │        
 │   │── exception.py          # Custom exception handling
 │   |── logger.py             # Logging utility
-│   |── utils.py              # Helper functions
+│   └── utils.py              # Helper functions
 │
 ├── venv                         # Virtual environment directory
 │
