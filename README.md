@@ -26,7 +26,7 @@ The project is designed to handle real-time network traffic and can be integrate
 
 ```bash
 ├── artifacts
-│   ├── data.csv                # Raw dataset used for training
+│   ├── data.csv                 # Raw dataset used for training
 │   ├── model_trained.pkl        # Final trained machine learning model
 │   ├── preprocessor.pkl         # Preprocessor pipeline (scalers, encoders, etc.)
 │   ├── test.csv                 # Test data
@@ -40,14 +40,17 @@ The project is designed to handle real-time network traffic and can be integrate
 │
 ├── src
 │   ├── components
-│   │   ├── data_ingestion.py     # Script for data ingestion from source
+│   │   ├── data_ingestion.py      # Script for data ingestion from source
 │   │   ├── data_transformation.py # Script for data preprocessing and transformation
-│   │   └── model_trainer.py      # Script for model training
+│   │   └── model_trainer.py       # Script for model training
 │   │
 │   ├── pipeline
-│   │   ├── exception.py          # Custom exception handling
-│   │   ├── logger.py             # Logging utility
-│   │   └── utils.py              # Helper functions
+|   |   ├── predict_pipeline.py    
+│   │   └── train_pipeline.py 
+│   │        
+│   │── exception.py          # Custom exception handling
+│   |── logger.py             # Logging utility
+│   |── utils.py              # Helper functions
 │
 ├── venv                         # Virtual environment directory
 │
