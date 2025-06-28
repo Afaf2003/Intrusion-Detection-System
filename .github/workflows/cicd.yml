@@ -61,7 +61,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/IDS-app:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/intrusiondetectionsystem-app:latest
 
     - name: Image digest
       run: echo ${{ steps.build-and-publish.outputs.digest }}
