@@ -38,7 +38,7 @@ jobs:
     - name: Build The Docker Image
       run: docker build . --file Dockerfile --tag workflow-test:$(date +%s)
 
-  bui build-and-publish:
+  build-and-publish:
     needs: build-and-test
     runs-on: ubuntu-latest
 
