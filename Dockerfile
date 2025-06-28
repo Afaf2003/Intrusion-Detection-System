@@ -19,7 +19,7 @@ COPY README.md /app/
 COPY setup.py /app/
 COPY ./src /app/src
 COPY ./artifacts /app/artifacts
-COPY ./dataset /app/dataset
+
 
 # Set the PYTHONPATH to include the /app directory
 ENV PYTHONPATH=/app 
